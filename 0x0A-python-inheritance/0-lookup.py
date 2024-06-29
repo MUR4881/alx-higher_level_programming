@@ -18,4 +18,4 @@ def lookup(obj):
     Return: A list containing the attributes of the object
 
     '''
-    return (list(obj.__dict__))
+    return (dir(obj))
