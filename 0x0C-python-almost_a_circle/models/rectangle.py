@@ -117,3 +117,11 @@ class Rectangle(Base):
         with the character #
         """
         print((('#' * self.__width) + '\n') * self.__height, end="")
+
+    def __str__(self):
+        """Overiding what is printed when the object
+        passed to a print function
+        """
+        return f'[{self.__class__.__name__}] ({self.id}) \
+{self.__x}/{self.__y} - \
+{self.__width}/{self.__height}'
