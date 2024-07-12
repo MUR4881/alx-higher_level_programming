@@ -111,3 +111,9 @@ class Rectangle(Base):
                 raise ValueError(f'{name} must be > 0')
         else:
             raise TypeError(f"{name} must be an integer")
+
+    def display(self):
+        """Print in stdout the Rectangle instance
+        with the character #
+        """
+        print((('#' * self.__width) + '\n') * self.__height, end="")
