@@ -126,3 +126,15 @@ class Rectangle(Base):
         return f'[{self.__class__.__name__}] ({self.id}) \
 {self.__x}/{self.__y} - \
 {self.__width}/{self.__height}'
+
+    def update(self, *args):
+        '''Updates the attributes of the objects
+
+        Args:
+            args: a list, or tuple of args
+        '''
+        # attributes are ordered here, values
+        # passed through args are expected
+        attrs = ['id', 'width', 'height', 'x', 'y']
+        for attr, value in zip(attrs, args):
+            self.__setattr__(attr,  value)
