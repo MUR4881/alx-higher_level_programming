@@ -88,6 +88,13 @@ class Rectangle(Base):
         self.validate(height, 'height')
         self.__height = height
 
+    def area(self):
+        """Generate the area of the Rectangle instance
+
+        Return: The area calculated
+        """
+        return self.__width * self.__height
+
     def validate(self, value, name):
         """Helps validate width, height, x, y
         attributes when setting
