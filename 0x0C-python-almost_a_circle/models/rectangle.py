@@ -116,7 +116,8 @@ class Rectangle(Base):
         """Print in stdout the Rectangle instance
         with the character #
         """
-        print((('#' * self.__width) + '\n') * self.__height, end="")
+        print(self.__y * '\n' + ((self.__x * ' ' + ('#' * self.__width) + '\n'
+                                  ) * self.__height), end="")
 
     def __str__(self):
         """Overiding what is printed when the object
