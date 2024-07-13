@@ -34,3 +34,19 @@ class Square(Rectangle):
         """
         return f'[{self.__class__.__name__}] ({self.id}) {self.x}/{self.y}\
  - {self.width}'
+
+    @property
+    def size(self):
+        '''getter method for size of the square,
+        actually, interacting, with width, height,
+        attribute/property from the Rectangle(Base)
+        class(of the base instance)
+
+        the setter, calls the setter, of width and height
+        '''
+        return self.width
+
+    @size.setter
+    def size(self, size):
+        self.width = size
+        self.heigth = size
