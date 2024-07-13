@@ -127,7 +127,7 @@ class Rectangle(Base):
 {self.__x}/{self.__y} - \
 {self.__width}/{self.__height}'
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         '''Updates the attributes of the objects
 
         Args:
@@ -135,6 +135,12 @@ class Rectangle(Base):
         '''
         # attributes are ordered here, values
         # passed through args are expected
-        attrs = ['id', 'width', 'height', 'x', 'y']
-        for attr, value in zip(attrs, args):
-            self.__setattr__(attr,  value)
+        if len(args) > 0:
+            attrs = ['id', 'width', 'height', 'x', 'y']
+            for attr, value in zip(attrs, args):
+                self.__setattr__(attr,  value)
+        # Going for attributes passed through kwargs
+        else:
+            for key, value in zip(kwargs.keys(), kwargs.values()):
+                if hasattr(self, key):
+                    self.__setattr__(key, value)
