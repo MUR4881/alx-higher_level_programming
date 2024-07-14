@@ -144,3 +144,15 @@ class Rectangle(Base):
             for key, value in zip(kwargs.keys(), kwargs.values()):
                 if hasattr(self, key):
                     self.__setattr__(key, value)
+
+    def to_dictionary(self):
+        '''Generate a dictionary representation of
+        a Rectangle instance
+
+        Return: The the diction of the attributes
+        '''
+        dct = {}
+        attrs = ['x', 'y', 'id', 'height', 'width']
+        for attr in attrs:
+            dct[attr] = getattr(self, attr)
+        return dct
