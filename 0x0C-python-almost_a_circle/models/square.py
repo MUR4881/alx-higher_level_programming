@@ -68,3 +68,15 @@ class Square(Rectangle):
             for key, value in zip(kwargs.keys(), kwargs.values()):
                 if hasattr(self, key):
                     self.__setattr__(key, value)
+
+    def to_dictionary(self):
+        '''Generate a dictionary representation of
+        a Square instance
+
+        Return: The the diction of the attributes
+        '''
+        dct = {}
+        attrs = ['id', 'x', 'size', 'y']
+        for attr in attrs:
+            dct[attr] = getattr(self, attr)
+        return dct
