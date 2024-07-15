@@ -58,3 +58,12 @@ class Base:
         with open(f'{cls.__name__}.json', 'w', encoding='utf-8') as file:
             # Dump the string into the file
             file.write(jstring)
+
+    @staticmethod
+    def from_json_string(json_string):
+        '''Convert a json string to a python object.
+        used for a list of dict in this case
+        '''
+        if json_string is None:
+            return []
+        return loads(json_string)
