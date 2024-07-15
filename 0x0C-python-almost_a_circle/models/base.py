@@ -22,8 +22,8 @@ class Base:
             defaultely instant count, if not passed
         """
         if id is None:
-            self.__class__.__nb_objects += 1
-            self.id = self.__class__.__nb_objects  #: int: count or id
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects  #: int: count or id
         else:
             self.id = id
 
