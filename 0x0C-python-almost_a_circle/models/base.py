@@ -37,3 +37,24 @@ class Base:
         if list_dictionaries is None:
             return "[]"
         return dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        '''Saves list of instances as dictionary,
+        to a file named after their __class__name
+
+        Args:
+            list_objs: list of object/instances
+        '''
+        lst = []  #: list: of dicts of the instance attribute
+        # Genete dict of instances and append to lst
+        if list_objs is not None:
+            for obj in list_objs:
+                lst.append(obj.to_dictionary())
+        # convert list_objs to json string
+        jstring = cls.to_json_string(lst)
+        # check the the object class and define class name
+        # Open the file in over-write mode
+        with open(f'{cls.__name__}.json', 'w', encoding='utf-8') as file:
+            # Dump the string into the file
+            file.write(jstring)
