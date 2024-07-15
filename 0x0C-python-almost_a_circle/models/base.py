@@ -87,3 +87,25 @@ class Base:
         # update with the passed values passed
         new_obj.update(**dictionary)
         return new_obj
+
+    @classmethod
+    def load_from_file(cls):
+        '''Load and returns a list of instances from a json file
+        (a json file, contain a list of dict of object attributes
+        '''
+        # Firstly, read from the file
+        objlist = []
+        try:
+            with open(f'{cls.__name__}.json', 'r', encoding="utf-8") as file:
+                # Read from the file
+                jstring = file.read()
+        except FileNotFoundError:
+            return objlist
+
+        # Convert json string to python list of dict
+        dictlist = cls.from_json_string(jstring)
+        # Then create and append object to list
+        for dct in dictlist:
+            # Creating object and appending to list
+            objlist.append(cls.create(**dct))
+        return objlist
