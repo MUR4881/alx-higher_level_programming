@@ -137,7 +137,8 @@ class Rectangle(Base):
         # passed through args are expected
         if len(args) > 0:
             attrs = ['id', 'width', 'height', 'x', 'y']
-            for attr, value in zip(attrs, args):
+            for attr, value in zip(attrs, *args):
+                print(f'Upadting {attr} to {value}')
                 self.__setattr__(attr,  value)
         # Going for attributes passed through kwargs
         else:
@@ -156,3 +157,16 @@ class Rectangle(Base):
         for attr in attrs:
             dct[attr] = getattr(self, attr)
         return dct
+
+    def to_list(self):
+        '''Generate A list of attributes value of
+        a Rectangle instance
+
+        Return: The list of attributes values
+        '''
+        lst = []
+        attrs = ['id', 'width', 'height', 'x', 'y']
+        # Now return the list value of the attributes
+        for attr in attrs:
+            lst.append(getattr(self, attr))
+        return lst

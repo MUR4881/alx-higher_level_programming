@@ -5,6 +5,7 @@
 """A simple module, entailing a simple Base class called Base
 """
 from json import load, loads, dump, dumps
+from csv import writer, reader
 
 
 class Base:
@@ -80,9 +81,9 @@ class Base:
         # Create new object with dummy variables
         if cls.__name__ == "Rectangle":
             new_obj = cls(1, 1)
-        if cls.__name__ == "Square":
+        elif cls.__name__ == "Square":
             new_obj = cls(1)
-        if cls.__name__ == "Base":
+        elif cls.__name__ == "Base":
             new_obj = cls()
         # update with the passed values passed
         new_obj.update(**dictionary)
@@ -109,3 +110,64 @@ class Base:
             # Creating object and appending to list
             objlist.append(cls.create(**dct))
         return objlist
+
+    @classmethod
+    def create_csv(cls, *lst):
+        '''Create a new of instance of the caller's class
+
+        Args:
+            lst: a dictionary of attributes and values for the object
+
+        return the new insance
+        '''
+        # Create new object with dummy variables
+        if cls.__name__ == "Rectangle":
+            new_obj = cls(1, 1)
+        elif cls.__name__ == "Square":
+            new_obj = cls(1)
+        elif cls.__name__ == "Base":
+            new_obj = cls()
+        # update with the passed values passed
+        new_obj.update(lst)
+        return new_obj
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        '''Save list representation of an object
+        attributes to a csv file
+
+        Args:
+            list_objs: The list of objects references
+        '''
+        listOflist = []  #: list: list of list of objects
+        # generate and append the list of each object attrs
+        if list_objs is not None:
+            for objs in list_objs:
+                listOflist.append(objs.to_list())
+        # Open and write to the file in csv format
+        with open(f'{cls.__name__}.csv', 'w', encoding="utf-8") as file:
+            writecsv = writer(file)
+            writecsv.writerows(listOflist)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Generate list of objects from csv file.
+        attribute, values are stored in other in the csv
+        file.
+
+        Return: list of object/instance of the calling class
+        """
+        listOfObj = []
+        # Open the file and read
+        try:
+            with open(f'{cls.__name__}.csv', 'r', encoding="utf-8") as file:
+                read = reader(file)
+                # Reading and converting each element to list of list of int
+                listOflist = [[int(x) for x in line] for line in read]
+        except FileNotFoundError:
+            return listOfObj
+        # Generate object and append to list
+        for attrs in listOflist:
+            listOfObj.append(cls.create_csv(*attrs))
+
+        return listOfObj

@@ -61,7 +61,7 @@ class Square(Rectangle):
         # passed through args are expected
         if len(args) > 0:
             attrs = ['id', 'size', 'x', 'y']
-            for attr, value in zip(attrs, args):
+            for attr, value in zip(attrs, *args):
                 self.__setattr__(attr,  value)
         # Going for attributes passed through kwargs
         else:
@@ -80,3 +80,16 @@ class Square(Rectangle):
         for attr in attrs:
             dct[attr] = getattr(self, attr)
         return dct
+
+    def to_list(self):
+        '''Generate A list of attributes value of
+        a Square instance
+
+        Return: The list of attributes values
+        '''
+        lst = []
+        attrs = ['id', 'size', 'x', 'y']
+        # Now return the list value of the attributes
+        for attr in attrs:
+            lst.append(getattr(self, attr))
+        return lst
