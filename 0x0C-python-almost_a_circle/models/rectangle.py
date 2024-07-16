@@ -138,7 +138,6 @@ class Rectangle(Base):
         if len(args) > 0:
             attrs = ['id', 'width', 'height', 'x', 'y']
             for attr, value in zip(attrs, *args):
-                print(f'Upadting {attr} to {value}')
                 self.__setattr__(attr,  value)
         # Going for attributes passed through kwargs
         else:
