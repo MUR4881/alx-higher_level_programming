@@ -1,0 +1,3 @@
+-- SCANNING DATABASES
+-- Display ALL Available DATABASES in the DBMS
+SHOW DATABASES;
