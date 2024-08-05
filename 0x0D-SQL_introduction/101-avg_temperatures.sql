@@ -1,7 +1,7 @@
 -- Estimate the average temperature of cities
 
 -- Import the TABLE/DATA
-SOURCE temperatures.sql
+\. temperatures.sql;
 
 -- Manipulate for average_temp by city and ordering(in descending order) by it
 SELECT city, AVG(value) AS avg_temp
