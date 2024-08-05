@@ -1,5 +1,8 @@
 -- Estimate the average temperature of cities
 
+-- Set context to hbtn_0c_0
+USE hbtn_0c_0;
+
 -- Import the TABLE/DATA
 \. temperatures.sql
 
