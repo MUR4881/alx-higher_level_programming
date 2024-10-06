@@ -9,8 +9,8 @@ class Rectangle {
     }
   }
 
-  print () {
-    console.log((('X'.repeat(this.width) + '\n').repeat(this.height)).replace(/\n$/, ''));
+  print (c = 'X') {
+    console.log(((c.repeat(this.width) + '\n').repeat(this.height)).replace(/\n$/, ''));
   }
 
   rotate () {
