@@ -10,7 +10,6 @@ related database table
     conn: Connection object (connection to the database)
         cur:  cursor (pointer to context) in the database
 """
-
 import MySQLdb
 from sys import argv
 
